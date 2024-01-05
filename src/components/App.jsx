@@ -17,9 +17,9 @@ export default class App extends Component {
   };
 
   onDelete = contactId => {
-    this.setState({
-      contacts: this.state.contacts.filter(contact => contact.id !== contactId),
-    });
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
   };
 
   addContact = newContact => {
@@ -34,20 +34,19 @@ export default class App extends Component {
   };
 
   isContactAlreadyAdded = name => {
-    if (
+    return (
       this.state.contacts.filter(
         contact => contact.name.toLocaleLowerCase() === name.toLocaleLowerCase()
       ).length > 0
-    ) {
-      return true;
-    }
-
-    return false;
+    );
   };
 
-  searchResult = keyword => {
-    return this.state.contacts.filter(contact =>
-      contact.name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())
+  searchResult = () => {
+    const { filter, contacts } = this.state;
+    const keyword = filter?.toLocaleLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLocaleLowerCase().includes(keyword)
     );
   };
 
@@ -62,7 +61,7 @@ export default class App extends Component {
           <Section title="Contacts">
             <ContactsListFilter onChange={this.onChange} />
             <ContactsList
-              contacts={this.searchResult(this.state.filter)}
+              contacts={this.searchResult()}
               onDelete={this.onDelete}
             />
           </Section>
