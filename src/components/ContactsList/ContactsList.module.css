@@ -1,0 +1,16 @@
+.contactsList {
+  padding: 20px;
+}
+
+.contactListItem {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 5px 0;
+}
+
+.contactListItem:hover {
+  background-color: #f4f4f4;
+}

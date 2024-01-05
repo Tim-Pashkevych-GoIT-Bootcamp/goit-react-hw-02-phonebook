@@ -1,0 +1,11 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  width: 500px;
+}
+
+.sectionTitle {
+  margin-bottom: 20px;
+}

@@ -1,0 +1,10 @@
+.formLabel {
+  padding-right: 5px;
+  min-width: 70px;
+}
+
+.formFieldSet {
+  display: flex;
+  border: none;
+  padding: 0;
+}
